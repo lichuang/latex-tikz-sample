@@ -1,0 +1,33 @@
+\documentclass{minimal}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+\usepackage{hyperref}
+
+\begin{document}
+
+reference: \url{https://texample.net/tikz/examples/filesystem-tree/}
+
+\tikzstyle{every node}=[draw=black,thick,anchor=west]
+\tikzstyle{selected}=[draw=red,fill=red!30]
+\tikzstyle{optional}=[dashed,fill=gray!50]
+
+\begin{tikzpicture}[%
+  grow via three points={one child at (0.5,-0.7) and
+  two children at (0.5,-0.7) and (0.5,-1.4)},
+  edge from parent path={(\tikzparentnode.south) |- (\tikzchildnode.west)}]
+  \node {texmf}
+    child { node {doc}}		
+    child { node {fonts}}
+    child { node {source}}
+    child { node [selected] {tex}
+      child { node {generic}}
+      child { node [optional] {latex}}
+      child { node {plain}}
+    }
+    child [missing] {}				
+    child [missing] {}				
+    child [missing] {}				
+    child { node {texdoc}};
+\end{tikzpicture}
+\end{document}
