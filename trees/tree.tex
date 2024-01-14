@@ -1,0 +1,63 @@
+\documentclass{minimal}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[UTF8, scheme=plain]{ctex}
+
+\begin{document}
+    \begin{tikzpicture}   %创建环境
+            [thick,scale=0.9, every node/.style={scale=0.8}]
+            %thick,scale是整张树形图的大小，可以在0~1内调整树形图的大小
+            %every node/.style={scale=0.8}是每个节点文字的大小，可以修改调整节点文字的大小。
+
+            \node {数据中心网络}
+            child {node {交换机中心架构}
+                child {node {树形架构}
+                }
+                child [missing] {}
+                child {node {平坦架构}
+                }
+                child [missing] {}
+                child {node {非结构型架构}
+                }
+            }    
+            child [missing] {}    %child [missing] {}充当间隔符号，隔开各个子树，可以增减其个数调整子树间距。
+            child [missing] {}
+            child [missing] {}    
+            child [missing] {}        
+            child { node {服务器中心架构}
+                child {node {巨型网络架构}
+                }
+                child [missing] {} %child [missing] {}充当间隔符号
+                child {node {标准网络架构}
+                }
+            }    
+            child [missing] {}
+            child [missing] {}    
+            child [missing] {}    
+            child { node {增强行架构}
+                child {node {无线网络架构}
+                }
+                child [missing] {}
+                child {node {光纤网络架构}
+                }
+            };
+        \end{tikzpicture}
+
+\begin{tikzpicture}[grow'=right] %grow'=上下左右，可以调整树形图开口方向
+	\tikzset{level distance=60pt} %设置两极树之间的距离
+	\tikzset{every tree node/.style={anchor=base west}} %每一列左对齐（缺省为居中对齐）
+	\Tree
+	[.动力系统 
+		[.动力部分 ]
+		[.电力系统 
+			[.发电机 ]
+			[.电力网 
+				[.升降压变压器 ] %注意右方括号左边有个空格
+				[.输配电线路 ]
+			]
+			[.电力设备 ]
+		]
+	]
+	\end{tikzpicture}
+	
+\end{document}
