@@ -3,7 +3,11 @@
 \usetikzlibrary{shadings}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.16}
+\usepackage{hyperref}
+
 \begin{document}
+
+reference: \url{https://tex.stackexchange.com/questions/479814/a-diagram-about-partial-derivatives-of-fx-y}
 
 \begin{tikzpicture}[bullet/.style={circle,fill,inner sep=1pt},
  declare function={f(\x,\y)=2-0.5*pow(\x-1.25,2)-0.5*pow(\y-1,2);}]

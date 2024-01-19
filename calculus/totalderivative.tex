@@ -1,11 +1,16 @@
-\documentclass[crop,tikz]{standalone}
+\documentclass[tikz,border=3.14mm]{standalone}
 
 \usepackage{pgfplots}
 \usepackage{physics}
+\usepackage{hyperref}
 \pgfplotsset{compat=1.17}
 \tikzset{>=latex}
 
 \colorlet{green}{black!40!green}
+
+\begin{document}
+
+reference: \url{https://www.latexstudio.net/index/details/index/mid/3531.html}
 
 \pgfplotsset{
   inverted/.style = {
@@ -25,9 +30,6 @@
     axis line style={-latex}
   }
 }
-
-
-\begin{document}
 \begin{tikzpicture}
   \pgfmathsetmacro{\px}{1};
   \pgfmathsetmacro{\py}{1};
@@ -93,4 +95,6 @@
     \draw[decorate, decoration = {brace, amplitude=3pt}] ([xshift=7em]{\px+\dx}, {\py+\dy}, {t(\px+\dx, \py+\dy)}) -- ([xshift=7em]{\px+\dx}, {\py+\dy}, {f(\px, \py)}) node[right,xshift=0.5em,midway] {$\dd{f(x_0, y_0)}$};
   \end{axis}
 \end{tikzpicture}
+
+
 \end{document}
