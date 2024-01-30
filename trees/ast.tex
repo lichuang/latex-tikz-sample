@@ -1,0 +1,42 @@
+\documentclass{article} 
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+\begin{document}
+
+https://tex.stackexchange.com/questions/85112/drawing-a-syntax-tree-in-tikz
+
+\begin{tikzpicture}[
+  tlabel/.style={pos=0.4,right=-1pt,font=\footnotesize\color{red!70!black}},
+]
+\node{S}
+child {node {a}}
+child {node {S} 
+  child {node {a}}
+  child {node {S}
+    child {node {$\varepsilon$}
+      edge from parent node[tlabel,pos=0.2] {2}
+    }
+    edge from parent node[tlabel] {1}
+  }
+  child {node {B}
+    child {node {B}
+      child {node {b}
+        edge from parent node[tlabel,pos=0.2] {5}
+     }
+      edge from parent node[tlabel] {4}
+    }
+    child {node {b}}
+  }
+    edge from parent node[tlabel] {1}
+  }
+child {node {B}
+  child[missing] {}
+  child[missing] {}
+  child {node {b}
+    edge from parent node[tlabel,pos=0.15,right=2pt] {5}
+  }
+};
+\end{tikzpicture}
+
+\end{document}
