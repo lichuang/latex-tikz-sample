@@ -5,16 +5,15 @@
 
 %Defining the styles used in trees
 %Note that the fill colour is not defined here.
+
+
+\begin{document}
+
+\begin{figure}
 \tikzset{parent/.style={align=center,text width=2cm,rounded corners=2pt},
     child/.style={align=center,text width=2cm,rounded corners=6pt},
     grandchild/.style={text width=2.3cm}
 }
-
-\begin{document}
-
-
-https://tex.stackexchange.com/questions/226435/reducing-forest-tree-width-without-squashing
-
 \begin{forest}
 for tree={%
     l sep=1cm,
@@ -23,31 +22,23 @@ for tree={%
     minimum width=2cm,
     draw %Put lines around each
     }
-[Company, name=Company, parent, fill=blue!30
-    [Distributor, for tree={child, fill=green!30}  %Format everything below here as children
-        [Sub distributor
-            [Agent]
-            [Agent]
-        ]
-        [Sub distributor,
-            [Agent,
-                [Customer] {\draw[->,dotted] () -- ++(-4cm,0) to[out=north,in=west] (Company);}
-                [Installer]
-                [Installer]
-            ]
-            [Agent]
-        ]
+[CrossJoin, parent, fill=blue!30
+    [Left, for tree={child, fill=green!30}  %Format everything below here as children
     ]
-    [Distributor, for tree={child, fill=pink!50}
-        [Sub distributor]
-        [Sub distributor
-            [Installer
-                [Customer] {\draw[<->] () to[out=east,in=south] (Scratch);}
+    [Filter, for tree={child, fill=pink!50}
+        [eq
+            [1]
+            [count(\*), for tree={child, fill=green!50}
+            	[limit, for tree={child, fill=yellow!50}
+            		[1]
+            		[子查询]
+            	]
             ]
-            [Scratchcard reseller, name=Scratch]
         ]
     ]
 ]
 \end{forest}
+\end{figure}
+
 
 \end{document}
